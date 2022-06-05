@@ -18,10 +18,10 @@ const Upload = () => {
     const [words, setWords] = useState([]);
     const [selectedWord, setSelectedWord] =  useState('');
     const [guessed, setGuessed] = useState([]);
-    const [turn, setTurn] = useState(0);
+    const [wrong, setWrong] = useState(0);
     const [images, setImages] = useState([img0, img1, img2, img3, img4, img5, img6])
-    const maxTurns = 6;
-    const gameOver = turn >= maxTurns;
+    const maxWrong = 6;
+    const gameOver = wrong >= maxWrong;
     // let selectedWord = words[Math.floor(Math.random() * words.length)];
 
     
@@ -30,6 +30,10 @@ const Upload = () => {
         const random = Math.floor(Math.random() * words.length);
         setSelectedWord(words[random])
         console.log(selectedWord)
+    }
+
+    const guessedWord = () => {
+        return selectedWord.split('').map(letter => (guessed.includes(letter) ? letter : ' _ '))
     }
     return (
         <div>
@@ -63,9 +67,12 @@ const Upload = () => {
             >
                 DROP HERE
             </div>
-                <p>wrong guesses {turn} of {maxTurns}</p>
-                <img src={images[turn]} />
-                <Word selectedWord={selectedWord}/>
+                <p>wrong guesses {wrong} of {maxWrong}</p>
+                <div className='hangman'>
+                    <img src={images[wrong]} />
+                    <Word selectedWord={selectedWord} gameOver={gameOver} guessedWord={guessedWord}/>
+                    {/* <h1>{!gameOver ? guessedWord() : selectedWord}</h1> */}
+                </div>
                 <button onClick={playAgain}>New Game</button>
         </div>
         // <h1>csv</h1>

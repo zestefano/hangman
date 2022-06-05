@@ -16,3 +16,9 @@
 .gray {
     background-color: lightgray;
 }
+
+
+.hangman {
+    width: 50%;
+    margin-top: 50px;
+}

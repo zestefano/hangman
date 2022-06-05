@@ -1,8 +1,8 @@
 
 
-const Word = ({selectedWord}) => {
+const Word = ({ selectedWord, gameOver, guessedWord }) => {
     return (
-        <h1>{selectedWord}</h1>
+        <h1>{!gameOver ? guessedWord() : selectedWord}</h1>
     )
 
 }
