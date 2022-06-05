@@ -1,0 +1,18 @@
+.csvDiv {
+    border: 5px solid black;
+    width: 80%;
+    height: 50px;
+    justify-content: center;
+}
+
+.background-green {
+    background-color: lightgreen;
+}
+
+.border-green {
+    border: 5px solid green;
+}
+
+.gray {
+    background-color: lightgray;
+}
