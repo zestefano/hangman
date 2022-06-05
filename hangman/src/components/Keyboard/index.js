@@ -1,7 +1,7 @@
 
 
 
-const Keyboard = ({guessed, setGuessed, setWrong ,wrong, selectedWord}) => {
+const Keyboard = ({guessed, setGuessed, setWrong ,wrong, selectedWord, isWinner, gameOver}) => {
 
     const handleGuess = (e) => {
         let letter = e.target.value;
@@ -22,6 +22,14 @@ const Keyboard = ({guessed, setGuessed, setWrong ,wrong, selectedWord}) => {
         ))
     }
     let gameStat = generateButtons();
+
+    if(isWinner) {
+        gameStat = 'YOU WON!!!'
+    }
+
+    if(gameOver) {
+        gameStat = 'YOU LOST! :['
+    }
 
 
     return (

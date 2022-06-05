@@ -22,8 +22,7 @@ const Upload = () => {
     const [wrong, setWrong] = useState(0);
     const [images, setImages] = useState([img0, img1, img2, img3, img4, img5, img6])
     const maxWrong = 6;
-    const gameOver = wrong >= maxWrong;
-    // let selectedWord = words[Math.floor(Math.random() * words.length)];
+    // let selectedWord = words[Math.floor(Math.random() * words.length)]
 
     
 
@@ -38,6 +37,10 @@ const Upload = () => {
     const guessedWord = () => {
         return selectedWord.split('').map(letter => (guessed.includes(letter) ? letter : ' _ '))
     }
+
+    const gameOver = wrong >= maxWrong;
+    const isWinner = guessedWord().join('') === selectedWord
+
     return (
         <div>
             <h1>CSV Import</h1>
@@ -77,7 +80,7 @@ const Upload = () => {
                     {/* <h1>{!gameOver ? guessedWord() : selectedWord}</h1> */}
                 </div>
                 <button onClick={playAgain}>New Game</button>
-                <Keyboard guessed={guessed} setGuessed={setGuessed} wrong={wrong} selectedWord={selectedWord} setWrong={setWrong}/>
+                <Keyboard guessed={guessed} setGuessed={setGuessed} wrong={wrong} selectedWord={selectedWord} isWinner={isWinner} gameOver={gameOver} setWrong={setWrong}/>
         </div>
         // <h1>csv</h1>
     )
