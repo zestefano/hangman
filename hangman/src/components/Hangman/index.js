@@ -7,7 +7,15 @@ import './csvUpload.css'
 const Upload = () => {
     const [hover, setHover] = useState(false);
     const [words, setWords] = useState([]);
-    let selectedWord = words[Math.floor(Math.random() * words.length)];
+    const [selectedWord, setSelectedWord] =  useState('')
+    // let selectedWord = words[Math.floor(Math.random() * words.length)];
+
+
+    const playAgain = () => {
+        const random = Math.floor(Math.random() * words.length);
+        setSelectedWord(words[random])
+        console.log(selectedWord)
+    }
     return (
         <div>
             <h1>CSV Import</h1>
@@ -33,6 +41,7 @@ const Upload = () => {
                         const res = parse(text)
                         const csvData = res.data.flat()
                         setWords(csvData)
+                        setSelectedWord(words[0])
                         console.log(csvData)
                     })
                 }}
@@ -40,6 +49,7 @@ const Upload = () => {
                 DROP HERE
             </div>
                 <Word selectedWord={selectedWord}/>
+                <button onClick={playAgain}>New Game</button>
         </div>
         // <h1>csv</h1>
     )
