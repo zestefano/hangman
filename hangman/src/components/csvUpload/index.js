@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { parse } from 'papaparse';
 import './csvUpload.css'
 
 
@@ -25,13 +26,19 @@ const Upload = () => {
                     // console.log(e.dataTransfer.files)
                     Array.from(e.dataTransfer.files)
                     .filter(file => file.type === 'text/csv')
-                    .forEach(file => console.log(file))
+                    .forEach(async file => {
+                        const text = await file.text()
+                        const res = parse(text)
+                        const test = res.data.flat()
+                        setWords(test)
+                        console.log(test)
+                    })
                 }}
             >
                 DROP HERE
             </div>
             <ul>
-                {words.map(word => <li>{word.name}</li>)}
+                {words.map(word => <li>{word}</li>)}
             </ul>
         </div>
         // <h1>csv</h1>
