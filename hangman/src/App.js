@@ -1,5 +1,5 @@
 import { Route, Switch } from "react-router-dom";
-import Upload from "./components/csvUpload";
+import Upload from "./components/Hangman";
 
 
 function App() {

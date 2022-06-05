@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { parse } from 'papaparse';
+import Word from '../Word';
 import './csvUpload.css'
 
 
 const Upload = () => {
     const [hover, setHover] = useState(false);
     const [words, setWords] = useState([]);
+    let selectedWord = words[Math.floor(Math.random() * words.length)];
     return (
         <div>
             <h1>CSV Import</h1>
@@ -29,17 +31,15 @@ const Upload = () => {
                     .forEach(async file => {
                         const text = await file.text()
                         const res = parse(text)
-                        const test = res.data.flat()
-                        setWords(test)
-                        console.log(test)
+                        const csvData = res.data.flat()
+                        setWords(csvData)
+                        console.log(csvData)
                     })
                 }}
             >
                 DROP HERE
             </div>
-            <ul>
-                {words.map(word => <li>{word}</li>)}
-            </ul>
+                <Word selectedWord={selectedWord}/>
         </div>
         // <h1>csv</h1>
     )
