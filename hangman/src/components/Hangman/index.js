@@ -7,7 +7,7 @@ import './csvUpload.css'
 const Upload = () => {
     const [hover, setHover] = useState(false);
     const [words, setWords] = useState([]);
-    const [selectedWord, setSelectedWord] =  useState('')
+    const [selectedWord, setSelectedWord] =  useState(words[0])
     // let selectedWord = words[Math.floor(Math.random() * words.length)];
 
 
@@ -41,7 +41,7 @@ const Upload = () => {
                         const res = parse(text)
                         const csvData = res.data.flat()
                         setWords(csvData)
-                        setSelectedWord(words[0])
+                        setSelectedWord(csvData[0])
                         console.log(csvData)
                     })
                 }}
