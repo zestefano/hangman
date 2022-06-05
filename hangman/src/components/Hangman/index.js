@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { parse } from 'papaparse';
 import Word from '../Word';
+import Keyboard from '../Keyboard';
 import './csvUpload.css'
 
 
@@ -29,6 +30,8 @@ const Upload = () => {
     const playAgain = () => {
         const random = Math.floor(Math.random() * words.length);
         setSelectedWord(words[random])
+        setGuessed([])
+        setWrong(0)
         console.log(selectedWord)
     }
 
@@ -74,6 +77,7 @@ const Upload = () => {
                     {/* <h1>{!gameOver ? guessedWord() : selectedWord}</h1> */}
                 </div>
                 <button onClick={playAgain}>New Game</button>
+                <Keyboard guessed={guessed} setGuessed={setGuessed} wrong={wrong} selectedWord={selectedWord} setWrong={setWrong}/>
         </div>
         // <h1>csv</h1>
     )
