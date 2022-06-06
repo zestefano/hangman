@@ -23,7 +23,7 @@ const Hangman = () => {
     const [selectedWord, setSelectedWord] =  useState('');
     const [guessed, setGuessed] = useState([]);
     const [wrong, setWrong] = useState(0);
-    const [images, setImages] = useState([img0, img1, img2, img3, img4, img5, img6])
+    const [images] = useState([img0, img1, img2, img3, img4, img5, img6])
     const maxWrong = 6;
 
 
@@ -34,7 +34,6 @@ const Hangman = () => {
         setSelectedWord(words[random])
         setGuessed([])
         setWrong(0)
-        console.log(selectedWord)
     }
 
     const guessedWord = () => {
@@ -75,9 +74,9 @@ const Hangman = () => {
                     .forEach(async file => {
                         const text = await file.text()
                         const res = parse(text)
-                        const csvData = res.data.flat().filter(str => str == str.split('').reverse().join(''))
+                        const csvData = res.data.flat().filter(str => str === str.split('').reverse().join(''))
                         const filteredWords = csvData.filter(el => {
-                            return el != ''
+                            return el !== ''
                         })
                         setWords(filteredWords)
                         setSelectedWord(filteredWords[Math.floor(Math.random() * filteredWords.length)])
