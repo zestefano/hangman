@@ -80,7 +80,7 @@ const Hangman = () => {
             </div>
             <div className='hangmanTop'>
                 <p className='text'>
-                    {selectedWord && `wrong guesses ${wrong} of ${maxWrong}`}
+                    {selectedWord && `wrong guesses ${wrong} / ${maxWrong}`}
                     {!selectedWord && `choose a list below or drag and drop your own list above`}
                 </p>
                 <div className='newGameButton'>
@@ -91,8 +91,6 @@ const Hangman = () => {
                     >
                         new game
                     </button>}
-                </div>
-                <div className='newGameButton'>
                     {selectedWord && 
                     <button 
                     onClick={() => {
