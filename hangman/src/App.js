@@ -5,7 +5,7 @@ import Hangman from "./components/Hangman";
 function App() {
   return (
     <>
-      <h1>Palindrome Hangman</h1>
+      
       <Hangman />
     </>
 

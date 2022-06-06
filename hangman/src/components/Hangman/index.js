@@ -43,6 +43,9 @@ const Hangman = () => {
 
     return (
         <div className='main'>
+            <h1 className='title'>
+                Palindrome Hangman
+            </h1>
             <div
                 className={`csvDiv ${hover ? 'border-green background-green' : 'gray'}`}
                 onDragEnter={() => {
@@ -75,15 +78,21 @@ const Hangman = () => {
             >
                 DROP .CSV FILE HERE
             </div>
-                <p>wrong guesses {wrong} of {maxWrong}</p>
-                {selectedWord && <button onClick={playAgain}>New Game</button>}
-                <div className='hangman'>
-                    <img src={images[wrong]} />
-                    {/* <h1>{!gameOver ? guessedWord() : selectedWord}</h1> */}
+            <div className='hangmanTop'>
+                <p className='text'>
+                    wrong guesses {wrong} of {maxWrong}
+                </p>
+                <div className='newGameButton'>
+                    {selectedWord && <button onClick={playAgain}>New Game</button>}
                 </div>
-                <Word selectedWord={selectedWord} gameOver={gameOver} guessedWord={guessedWord}/>
-                
-                <Keyboard guessed={guessed} setGuessed={setGuessed} wrong={wrong} selectedWord={selectedWord} isWinner={isWinner} gameOver={gameOver} setWrong={setWrong}/>
+            </div>
+            <div className='hangman'>
+                <img src={images[wrong]} />
+                {/* <h1>{!gameOver ? guessedWord() : selectedWord}</h1> */}
+            </div>
+            <Word selectedWord={selectedWord} gameOver={gameOver} guessedWord={guessedWord}/>
+            
+            <Keyboard guessed={guessed} setGuessed={setGuessed} wrong={wrong} selectedWord={selectedWord} isWinner={isWinner} gameOver={gameOver} setWrong={setWrong}/>
         </div>
         // <h1>csv</h1>
     )
