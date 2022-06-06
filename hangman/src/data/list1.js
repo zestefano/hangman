@@ -6,7 +6,7 @@ const list1 = [
     'civic',
     'deified',
     'hannah',
-    'levek',
+    'level',
     'minim',
     'mom',
     'noon',
