@@ -15,6 +15,9 @@ const Rules = () => {
             </h1>
             <ul className="rulesList">
                 <li>
+                    Palindrome is a word, phrase, or sequence that reads the same backward as forward
+                </li>
+                <li>
                     Player must choose letters to guess the palindrome
                 </li>
                 <li>
@@ -27,7 +30,7 @@ const Rules = () => {
                     Player wins if they correctly guess the palindrome before reaching 6 missed letters
                 </li>
                 <li>
-                    Player may choose to drag and drop their own list of words or choose from pre-saved lists
+                    Player may choose to drag and drop their own list of words (only .csv files will be accepted) or choose from pre-saved lists
                 </li>
                 <li>
                     Select new game to play again with radomized word from list

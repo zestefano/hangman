@@ -83,7 +83,6 @@ const Hangman = () => {
                         setSelectedWord(filteredWords[Math.floor(Math.random() * filteredWords.length)])
                         setWrong(0)
                         setGuessed([])
-                        console.log(filteredWords)
                     })
                 }}
             >
@@ -94,11 +93,11 @@ const Hangman = () => {
                     {selectedWord && `${wrong} / ${maxWrong} wrong letters`}
                     {!selectedWord && `choose a list below or drag and drop your own list above`}
                 </p>
-                <div className='newGameButton'>
+                <div className='list1Button'>
                     {selectedWord && 
                     <button 
                     onClick={playAgain}
-                    className='newGameButton'
+                    className='keys btn1'
                     >
                         new game
                     </button>}
@@ -110,7 +109,7 @@ const Hangman = () => {
                         setWrong(0)
                         setGuessed([])
                     }}
-                    className='newGameButton'
+                    className='keys btn2'
                     >
                         change list
                     </button>}
@@ -118,7 +117,7 @@ const Hangman = () => {
                 <div className='list1Button'>
                         {!selectedWord && 
                         <button
-                        className='list1Button'
+                        className='keys btn1'
                         onClick={() => {
                             setSelectedWord(list1[Math.floor(Math.random() * list1.length)])
                             setWords(list1)
@@ -129,7 +128,7 @@ const Hangman = () => {
                         }
                         {!selectedWord && 
                         <button
-                        className='list2Button'
+                        className='keys btn2'
                         onClick={() => {
                             setSelectedWord(list2[Math.floor(Math.random() * list2.length)])
                             setWords(list2)
@@ -138,12 +137,13 @@ const Hangman = () => {
                             list 2
                         </button>
                         }
+                        
                 </div>
-            </div>
             <div className='hangman'>
                 <img src={images[wrong]} alt=''/>
             </div>
             <Word selectedWord={selectedWord} gameOver={gameOver} guessedWord={guessedWord}/>           
+            </div>
             <Keyboard guessed={guessed} setGuessed={setGuessed} wrong={wrong} selectedWord={selectedWord} isWinner={isWinner} gameOver={gameOver} setWrong={setWrong}/>
         </div>
     )

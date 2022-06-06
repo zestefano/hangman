@@ -25,11 +25,11 @@ const Keyboard = ({guessed, setGuessed, setWrong ,wrong, selectedWord, isWinner,
     let gameStat = generateButtons();
 
     if(isWinner) {
-        gameStat = <h1 className='win'>YOU WON!!!</h1>
+        gameStat = <h1 className='win'>YOU WON !</h1>
     }
 
     if(gameOver) {
-        gameStat = <h1 className='lose'>YOU LOST!</h1>
+        gameStat = <h1 className='lose'>YOU LOST !</h1>
     }
 
 
