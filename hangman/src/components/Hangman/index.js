@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { parse } from 'papaparse';
 import Word from '../Word';
 import Keyboard from '../Keyboard';
+import list1 from '../../data/list1';
+import list2 from '../../data/list2';
 import './hangman.css'
 
 
@@ -22,7 +24,6 @@ const Hangman = () => {
     const [wrong, setWrong] = useState(0);
     const [images, setImages] = useState([img0, img1, img2, img3, img4, img5, img6])
     const maxWrong = 6;
-    // let selectedWord = words[Math.floor(Math.random() * words.length)]
 
     
 
@@ -60,7 +61,6 @@ const Hangman = () => {
                 onDrop={(e) => {
                     e.preventDefault();
                     setHover(false)
-                    // console.log(e.dataTransfer.files)
                     Array.from(e.dataTransfer.files)
                     .filter(file => file.type === 'text/csv')
                     .forEach(async file => {
@@ -80,7 +80,8 @@ const Hangman = () => {
             </div>
             <div className='hangmanTop'>
                 <p className='text'>
-                    wrong guesses {wrong} of {maxWrong}
+                    {selectedWord && `wrong guesses ${wrong} of ${maxWrong}`}
+                    {!selectedWord && `choose a list below or drag and drop your own list above`}
                 </p>
                 <div className='newGameButton'>
                     {selectedWord && 
@@ -91,16 +92,51 @@ const Hangman = () => {
                         new game
                     </button>}
                 </div>
+                <div className='newGameButton'>
+                    {selectedWord && 
+                    <button 
+                    onClick={() => {
+                        setWords([])
+                        setSelectedWord('')
+                    }}
+                    className='newGameButton'
+                    >
+                        change list
+                    </button>}
+                </div>
+                <div className='list1Button'>
+                        {!selectedWord && 
+                        <button
+                        className='list1Button'
+                        onClick={() => {
+                            setSelectedWord(list1[Math.floor(Math.random() * list1.length)])
+                            setWords(list1)
+                        }}
+                        >
+                            list 1
+                        </button>
+                        }
+                </div>
+                <div className='list2Button'>
+                        {!selectedWord && 
+                        <button
+                        className='list2Button'
+                        onClick={() => {
+                            setSelectedWord(list2[Math.floor(Math.random() * list1.length)])
+                            setWords(list2)
+                        }}
+                        >
+                            list 2
+                        </button>
+                        }
+                </div>
             </div>
             <div className='hangman'>
-                <img src={images[wrong]} />
-                {/* <h1>{!gameOver ? guessedWord() : selectedWord}</h1> */}
+                <img src={images[wrong]} alt=''/>
             </div>
-            <Word selectedWord={selectedWord} gameOver={gameOver} guessedWord={guessedWord}/>
-            
+            <Word selectedWord={selectedWord} gameOver={gameOver} guessedWord={guessedWord}/>           
             <Keyboard guessed={guessed} setGuessed={setGuessed} wrong={wrong} selectedWord={selectedWord} isWinner={isWinner} gameOver={gameOver} setWrong={setWrong}/>
         </div>
-        // <h1>csv</h1>
     )
 }
 
