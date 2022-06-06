@@ -14,3 +14,13 @@
     justify-content: space-between;
     font-size: 25px;
 }
+
+.win {
+    font-size: 30px;
+    color: green;
+}
+
+.lose {
+    font-size: 30px;
+    color: red;
+}

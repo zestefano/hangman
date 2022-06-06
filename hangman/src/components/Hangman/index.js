@@ -72,6 +72,8 @@ const Hangman = () => {
                         })
                         setWords(filteredWords)
                         setSelectedWord(filteredWords[Math.floor(Math.random() * filteredWords.length)])
+                        setWrong(0)
+                        setGuessed([])
                         console.log(filteredWords)
                     })
                 }}
@@ -96,6 +98,8 @@ const Hangman = () => {
                     onClick={() => {
                         setWords([])
                         setSelectedWord('')
+                        setWrong(0)
+                        setGuessed([])
                     }}
                     className='newGameButton'
                     >
@@ -120,7 +124,7 @@ const Hangman = () => {
                         <button
                         className='list2Button'
                         onClick={() => {
-                            setSelectedWord(list2[Math.floor(Math.random() * list1.length)])
+                            setSelectedWord(list2[Math.floor(Math.random() * list2.length)])
                             setWords(list2)
                         }}
                         >
