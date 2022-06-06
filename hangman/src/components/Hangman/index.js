@@ -83,7 +83,13 @@ const Hangman = () => {
                     wrong guesses {wrong} of {maxWrong}
                 </p>
                 <div className='newGameButton'>
-                    {selectedWord && <button onClick={playAgain}>New Game</button>}
+                    {selectedWord && 
+                    <button 
+                    onClick={playAgain}
+                    className='newGameButton'
+                    >
+                        new game
+                    </button>}
                 </div>
             </div>
             <div className='hangman'>
