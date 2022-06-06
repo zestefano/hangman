@@ -65,9 +65,12 @@ const Hangman = () => {
                         const text = await file.text()
                         const res = parse(text)
                         const csvData = res.data.flat().filter(str => str == str.split('').reverse().join(''))
-                        setWords(csvData)
-                        setSelectedWord(csvData[Math.floor(Math.random() * csvData.length)])
-                        console.log(csvData)
+                        const filteredWords = csvData.filter(el => {
+                            return el != ''
+                        })
+                        setWords(filteredWords)
+                        setSelectedWord(filteredWords[Math.floor(Math.random() * filteredWords.length)])
+                        console.log(filteredWords)
                     })
                 }}
             >
