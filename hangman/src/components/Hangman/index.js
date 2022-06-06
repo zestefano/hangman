@@ -36,7 +36,11 @@ const Hangman = () => {
     }
 
     const guessedWord = () => {
-        return selectedWord.split('').map(letter => (guessed.includes(letter) ? letter : ' _ '))
+        if(!selectedWord) {
+            return ['only lists with palindromes will be accepted']
+        } else {
+            return selectedWord.split('').map(letter => (guessed.includes(letter) ? letter : ' _ '))
+        }
     }
 
     const gameOver = wrong >= maxWrong;
@@ -78,7 +82,7 @@ const Hangman = () => {
                     })
                 }}
             >
-                DROP .CSV FILE HERE
+                <h2>DROP .CSV FILE HERE</h2>
             </div>
             <div className='hangmanTop'>
                 <p className='text'>
@@ -118,8 +122,6 @@ const Hangman = () => {
                             list 1
                         </button>
                         }
-                </div>
-                <div className='list2Button'>
                         {!selectedWord && 
                         <button
                         className='list2Button'
