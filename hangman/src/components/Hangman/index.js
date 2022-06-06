@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { parse } from 'papaparse';
 import Word from '../Word';
 import Keyboard from '../Keyboard';
-import './csvUpload.css'
+import './hangman.css'
 
 
-const Upload = () => {
+const Hangman = () => {
     const img0 = 'https://res.cloudinary.com/zaf/image/upload/v1654414896/hangman/Screen_Shot_2022-06-05_at_3.35.23_AM_fse8w7.png';
     const img1 = 'https://res.cloudinary.com/zaf/image/upload/v1654414895/hangman/Screen_Shot_2022-06-05_at_3.35.32_AM_mi52dy.png';
     const img2 = 'https://res.cloudinary.com/zaf/image/upload/v1654414895/hangman/Screen_Shot_2022-06-05_at_3.35.42_AM_ktfcn9.png';
@@ -43,7 +43,7 @@ const Upload = () => {
 
     return (
         <div>
-            <h1>CSV Import</h1>
+            {/* <h1>CSV Import</h1> */}
             <div
                 className={`csvDiv ${hover ? 'border-green background-green' : 'gray'}`}
                 onDragEnter={() => {
@@ -71,7 +71,7 @@ const Upload = () => {
                     })
                 }}
             >
-                DROP HERE
+                DROP .CSV FILE HERE
             </div>
                 <p>wrong guesses {wrong} of {maxWrong}</p>
                 <div className='hangman'>
@@ -79,7 +79,7 @@ const Upload = () => {
                     <Word selectedWord={selectedWord} gameOver={gameOver} guessedWord={guessedWord}/>
                     {/* <h1>{!gameOver ? guessedWord() : selectedWord}</h1> */}
                 </div>
-                <button onClick={playAgain}>New Game</button>
+                {selectedWord && <button onClick={playAgain}>New Game</button>}
                 <Keyboard guessed={guessed} setGuessed={setGuessed} wrong={wrong} selectedWord={selectedWord} isWinner={isWinner} gameOver={gameOver} setWrong={setWrong}/>
         </div>
         // <h1>csv</h1>
@@ -90,4 +90,4 @@ const Upload = () => {
 
 
 
-export default Upload;
+export default Hangman;
