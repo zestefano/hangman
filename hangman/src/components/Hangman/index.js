@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { parse } from 'papaparse';
+import { NavLink } from 'react-router-dom';
 import Word from '../Word';
 import Keyboard from '../Keyboard';
 import list1 from '../../data/list1';
@@ -24,6 +25,7 @@ const Hangman = () => {
     const [wrong, setWrong] = useState(0);
     const [images, setImages] = useState([img0, img1, img2, img3, img4, img5, img6])
     const maxWrong = 6;
+
 
     
 
@@ -51,6 +53,9 @@ const Hangman = () => {
             <h1 className='title'>
                 Palindrome Hangman
             </h1>
+            <NavLink className='rules' to='/rules'>
+                rules
+            </NavLink>
             <div
                 className={`csvDiv ${hover ? 'border-green background-green' : 'gray'}`}
                 onDragEnter={() => {
@@ -86,7 +91,7 @@ const Hangman = () => {
             </div>
             <div className='hangmanTop'>
                 <p className='text'>
-                    {selectedWord && `wrong guesses ${wrong} / ${maxWrong}`}
+                    {selectedWord && `${wrong} / ${maxWrong} wrong letters`}
                     {!selectedWord && `choose a list below or drag and drop your own list above`}
                 </p>
                 <div className='newGameButton'>
