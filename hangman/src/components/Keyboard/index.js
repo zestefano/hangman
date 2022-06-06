@@ -33,7 +33,7 @@ const Keyboard = ({guessed, setGuessed, setWrong ,wrong, selectedWord, isWinner,
 
 
     return (
-        <p>{gameStat}</p>
+        <p>{selectedWord && gameStat}</p>
     )
 }
 

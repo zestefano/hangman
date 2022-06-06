@@ -64,7 +64,7 @@ const Upload = () => {
                     .forEach(async file => {
                         const text = await file.text()
                         const res = parse(text)
-                        const csvData = res.data.flat()
+                        const csvData = res.data.flat().filter(str => str == str.split('').reverse().join(''))
                         setWords(csvData)
                         setSelectedWord(csvData[Math.floor(Math.random() * csvData.length)])
                         console.log(csvData)
