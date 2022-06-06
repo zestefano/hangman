@@ -1,4 +1,4 @@
-
+import './keyboard.css'
 
 
 const Keyboard = ({guessed, setGuessed, setWrong ,wrong, selectedWord, isWinner, gameOver}) => {
@@ -12,6 +12,7 @@ const Keyboard = ({guessed, setGuessed, setWrong ,wrong, selectedWord, isWinner,
     const generateButtons = () => {
         return 'abcdefghijklmnopqrstuvwxyz'.split('').map(letter => (
             <button
+            className='keys'
             key={letter}
             value={letter}
             onClick={handleGuess}
@@ -33,7 +34,11 @@ const Keyboard = ({guessed, setGuessed, setWrong ,wrong, selectedWord, isWinner,
 
 
     return (
-        <p>{selectedWord && gameStat}</p>
+        <div className='keyboardDiv'>
+            {/* <p className='keys'> */}
+                {selectedWord && gameStat}
+            {/* </p> */}
+        </div>
     )
 }
 

@@ -42,8 +42,7 @@ const Hangman = () => {
     const isWinner = guessedWord().join('') === selectedWord
 
     return (
-        <div>
-            {/* <h1>CSV Import</h1> */}
+        <div className='main'>
             <div
                 className={`csvDiv ${hover ? 'border-green background-green' : 'gray'}`}
                 onDragEnter={() => {
@@ -77,12 +76,13 @@ const Hangman = () => {
                 DROP .CSV FILE HERE
             </div>
                 <p>wrong guesses {wrong} of {maxWrong}</p>
+                {selectedWord && <button onClick={playAgain}>New Game</button>}
                 <div className='hangman'>
                     <img src={images[wrong]} />
-                    <Word selectedWord={selectedWord} gameOver={gameOver} guessedWord={guessedWord}/>
                     {/* <h1>{!gameOver ? guessedWord() : selectedWord}</h1> */}
                 </div>
-                {selectedWord && <button onClick={playAgain}>New Game</button>}
+                <Word selectedWord={selectedWord} gameOver={gameOver} guessedWord={guessedWord}/>
+                
                 <Keyboard guessed={guessed} setGuessed={setGuessed} wrong={wrong} selectedWord={selectedWord} isWinner={isWinner} gameOver={gameOver} setWrong={setWrong}/>
         </div>
         // <h1>csv</h1>

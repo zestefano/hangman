@@ -1,0 +1,13 @@
+.keyboardDiv {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin: 10px;
+}
+
+
+.keys {
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+}
